@@ -12,7 +12,7 @@ public class Zad1 {
 		
 		int length = text.length();
 		char sample[] = new char [length];
-		int k = 3;//wiersze
+		int k = 2;//wiersze
 		int column = length/k;//kolumny		
 		int counter = 0;
 		
@@ -59,31 +59,62 @@ public class Zad1 {
 		 * System.out.println(coded[i]);
 		 * }
 		 */
-			
+		if(y<=1||y>=length){
+			coded=tab;
+			System.out.println("BEZ SENSU");
+		}	
 		
+		else{
 		for(int i = 0;i<length;i++){
-			if(mode==0){
-				System.out.println(counter + " 1u");
+			if(mode==0){//dodajacy
+				//System.out.println(counter + " 1u" +"  ");
 				temp[counter][i]=tab[i];
+				System.out.println(temp[counter][i] + "1T");
 				counter++;
 				
 					if(counter==y){
 						mode=1;
 						counter-=2;
+						i++;
 					}
 			}
-			if(mode==1){
-				System.out.println(counter + " 2u");
+			
+			if(y==2 && i==length && length%2==0){//MATKO JAK ŒMIESZNIE ;_;
+			
+				mode=0;
+				
+			}
+			
+			if(mode==1){//odejmujacy
+				//System.out.println(counter + " 2u"+"  ");
 				temp[counter][i]=tab[i];
+				System.out.println(temp[counter][i] + "2T");
 				counter--;
 				
 					if(counter==-1){
 						mode=0;
 						counter+=2;
+						
 					}
 			}
 		}
 		
+		counter=0;
+		
+		for(int i=0;i<y;i++){
+			
+			for(int j=0;j<length;j++){
+				if(Character.isLetter(temp[i][j])==true){
+					
+					coded[counter]=temp[i][j];		
+					System.out.println(coded[counter]);
+					counter++;
+				}
+			}
+			
+		}
+		
+	}
 		return coded;
 	
 	}
