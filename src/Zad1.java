@@ -2,14 +2,10 @@ import java.io.*;
 import java.util.*;
 
 public class Zad1 {
-
-
-	//static int[] seed={1,4,3,2};
 	
 	
 	public static void main(String[] args) throws FileNotFoundException {
-		// TODO Auto-generated method stub
-			//File file = new File ("imienazwisko.txt");			
+		// TODO Auto-generated method stub		
 		Scanner name = new Scanner(new File ("imienazwisko.txt"));
 		String text = name.nextLine();
 		System.out.println(text);
@@ -45,17 +41,47 @@ public class Zad1 {
 		}*/
 		
 		//System.out.println(matrix[2][3]);
-		Code( sample, k, length);
+		Code(sample, k, length);
 		
 	}
 
 	public static char[] Code(char tab[], int y, int length){//x=k, y=column
 		
 		char coded[]= new char[length];
+		char temp[][]= new char [y][length];		
+		int counter=0;
+		int mode=0;
 		
 		//check
-		for(int i=0;i<length/4;i++){
-			System.out.println(coded[i]);
+		/*
+		 * 
+		 * for(int i=0;i<length/4;i++){
+		 * System.out.println(coded[i]);
+		 * }
+		 */
+			
+		
+		for(int i = 0;i<length;i++){
+			if(mode==0){
+				System.out.println(counter + " 1u");
+				temp[counter][i]=tab[i];
+				counter++;
+				
+					if(counter==y){
+						mode=1;
+						counter-=2;
+					}
+			}
+			if(mode==1){
+				System.out.println(counter + " 2u");
+				temp[counter][i]=tab[i];
+				counter--;
+				
+					if(counter==-1){
+						mode=0;
+						counter+=2;
+					}
+			}
 		}
 		
 		return coded;
