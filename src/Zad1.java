@@ -12,9 +12,11 @@ public class Zad1 {
 		
 		int length = text.length();
 		char sample[] = new char [length];
-		int k = 2;//wiersze
-		int column = length/k;//kolumny		
-		int counter = 0;
+		char coded[] = new char [length];
+		char decoded[] = new char [length];
+		int k = 10;//wiersze
+		//int column = length/k;//kolumny		
+		//int counter = 0;
 		
 		for(int i=0;i<length;i++){
 			
@@ -41,7 +43,23 @@ public class Zad1 {
 		}*/
 		
 		//System.out.println(matrix[2][3]);
-		Code(sample, k, length);
+		coded=Code(sample, k, length);
+		for(int i = 0;i<length;i++){
+			System.out.print(coded[i]);
+		}
+		
+		try {
+		    Thread.sleep(1000);                 //1000 milliseconds is one second.
+		} catch(InterruptedException ex) {
+		    Thread.currentThread().interrupt();
+		}
+		System.out.println();
+		decoded=Decode(coded, k, length);
+//		check
+		for(int i=0;i<length;i++){
+			System.out.print(decoded[i]);
+		}
+//		
 		
 	}
 
@@ -117,5 +135,80 @@ public class Zad1 {
 	}
 		return coded;
 	
+	}
+	public static char[] Decode (char tab[], int k, int length){
+		
+		char decoded[]= new char[length];
+		int key;
+		int decoder[][]= new int [2][k];
+		int space=0;
+		
+		key=(2*k)-2;//-2 moze byc -3+1 bo indeks od 0
+		System.out.println(key);
+		
+		
+		
+		for(int i=0; i<k; i++){
+				
+			for(int j=0; j<2; j++){
+				
+				if(i==0||i==k-1){
+					decoder[j][i]=key;					
+				}
+				else{
+//					System.out.println("WESZLO");
+					if(j==0){
+						decoder[j][i]=key-space;
+						System.out.println(decoder[j][i]);
+					}
+					if(j==1){
+						decoder[j][i]=0+space;
+						System.out.println(decoder[j][i] + "U");
+					}
+				}
+				
+			}
+			
+			space+=2;
+			//tab
+		}
+//		check
+		for(int i=0; i<k; i++){
+			System.out.println();
+		for(int j=0; j<2; j++){
+			System.out.print(decoder[j][i]);}}
+		
+		
+		int verse=0;
+		int index=0;
+		int column=0;
+		int adder=0;
+		
+		for(int i=0;i<length;i++){
+			
+			System.out.println(index +""+ tab[i]);
+			decoded[index]=tab[i];
+			index+=decoder[column][verse];
+			
+			if(index>=length){
+				verse++;
+				adder++;
+				index=adder;
+				column=1;
+			}
+			
+			column++;
+			if(column==2){
+				column=0;
+			}
+			
+			
+			
+			
+		}
+		
+		
+		return decoded;
+		
 	}
 }
