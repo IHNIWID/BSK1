@@ -21,8 +21,8 @@ public class Zad1 {
 
 			char temp = 0;
 			temp = text.charAt(i);
-			System.out.println(temp);
-			System.out.println(text.length());
+//			System.out.println(temp);
+//			System.out.println(text.length());
 			sample[i] = temp;
 
 		}
@@ -74,7 +74,7 @@ public class Zad1 {
 		 */
 		if (y <= 1 || y >= length) {
 			coded = tab;
-			System.out.println("BEZ SENSU");
+//			System.out.println("BEZ SENSU");
 		}
 
 		else {
@@ -82,7 +82,7 @@ public class Zad1 {
 				if (mode == 0) {// dodajacy
 					// System.out.println(counter + " 1u" +" ");
 					temp[counter][i] = tab[i];
-					System.out.println(temp[counter][i] + "1T");
+//					System.out.println(temp[counter][i] + "1T");
 					counter++;
 
 					if (counter == y) {
@@ -102,7 +102,7 @@ public class Zad1 {
 				if (mode == 1) {// odejmujacy
 					// System.out.println(counter + " 2u"+" ");
 					temp[counter][i] = tab[i];
-					System.out.println(temp[counter][i] + "2T");
+//					System.out.println(temp[counter][i] + "2T");
 					counter--;
 
 					if (counter == -1) {
@@ -121,7 +121,7 @@ public class Zad1 {
 					if (Character.isLetter(temp[i][j]) == true) {
 
 						coded[counter] = temp[i][j];
-						System.out.println(coded[counter]);
+//						System.out.println(coded[counter]);
 						counter++;
 					}
 				}
@@ -141,7 +141,7 @@ public class Zad1 {
 		int space = 0;
 
 		key = (2 * k) - 2;// -2 moze byc -3+1 bo indeks od 0
-		System.out.println(key);
+		System.out.println();
 
 		for (int i = 0; i < k; i++) {
 
@@ -153,11 +153,11 @@ public class Zad1 {
 					// System.out.println("WESZLO");
 					if (j == 0) {
 						decoder[j][i] = key - space;
-						System.out.println(decoder[j][i]);
+//						System.out.println(decoder[j][i]);
 					}
 					if (j == 1) {
 						decoder[j][i] = 0 + space;
-						System.out.println(decoder[j][i] + "U");
+//						System.out.println(decoder[j][i] + "U");
 					}
 				}
 
@@ -168,9 +168,9 @@ public class Zad1 {
 		}
 		// check
 		for (int i = 0; i < k; i++) {
-			System.out.println();
+//			System.out.println();
 			for (int j = 0; j < 2; j++) {
-				System.out.print(decoder[j][i]);
+//				System.out.print(decoder[j][i]);
 			}
 		}
 
@@ -181,7 +181,7 @@ public class Zad1 {
 
 		for (int i = 0; i < length; i++) {
 
-			System.out.println(index + "" + tab[i]);
+//			System.out.println(index + "" + tab[i]);
 			decoded[index] = tab[i];
 			index += decoder[column][verse];
 
